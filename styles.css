@@ -1,0 +1,23 @@
+/* styles.css — Custom styles beyond Tailwind */
+
+body {
+    margin: 0;
+    padding: 0;
+    scroll-behavior: smooth; /* Smooth scrolling to #projects */
+}
+
+/* Optional: Add animation or tweak spacing */
+header img {
+    border: 4px solid rgba(255, 255, 255, 0.2);
+    transition: transform 0.3s ease;
+}
+
+header img:hover {
+    transform: scale(1.05);
+}
+
+/* Add glow on project cards */
+.grid > div:hover {
+    transform: translateY(-5px);
+    transition: all 0.3s ease;
+}

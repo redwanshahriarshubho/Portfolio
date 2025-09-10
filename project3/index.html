@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-gradient-to-br from-cyan-400 to-blue-600 min-h-screen flex flex-col items-center justify-center p-4">
+    <div class="bg-white rounded-2xl shadow-2xl p-8 max-w-md w-full text-center">
+        <h1 class="text-3xl font-bold mb-6 text-gray-800">Weather Dashboard</h1>
+        <input 
+            type="text" 
+            id="cityInput" 
+            placeholder="Enter city name" 
+            class="w-full p-3 border border-gray-300 rounded-lg mb-4 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            onkeypress="handleKeyPress(event)"
+        >
+        <button 
+            onclick="getWeather()" 
+            class="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition w-full mb-6"
+        >
+            Get Weather
+        </button>
+
+        <div id="weatherResult" class="hidden">
+            <h2 id="cityName" class="text-2xl font-bold mb-2"></h2>
+            <img id="weatherIcon" class="mx-auto w-20 h-20 mb-2" src="" alt="Weather Icon">
+            <p id="temperature" class="text-5xl font-thin mb-1"></p>
+            <p id="description" class="text-gray-600 mb-4 capitalize"></p>
+            <div class="grid grid-cols-2 gap-4 text-sm">
+                <div>
+                    <p class="font-semibold">Feels Like</p>
+                    <p id="feelsLike"></p>
+                </div>
+                <div>
+                    <p class="font-semibold">Humidity</p>
+                    <p id="humidity"></p>
+                </div>
+                <div>
+                    <p class="font-semibold">Wind</p>
+                    <p id="wind"></p>
+                </div>
+                <div>
+                    <p class="font-semibold">Pressure</p>
+                    <p id="pressure"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
