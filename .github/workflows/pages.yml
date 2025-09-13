@@ -2,22 +2,33 @@ name: Deploy to GitHub Pages
 
 on:
   push:
-    branches: ["main"]  # Runs when you push to main
+    branches: ["main"]  # Deploys when you push to main
 
 jobs:
-  deploy:
+  build-and-deploy:
     runs-on: ubuntu-latest
+
     steps:
+      # 1. Checkout the repository
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Setup Pages
-        uses: actions/configure-pages@v4
-
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
+      # 2. Setup Node.js
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
         with:
-          path: .   # Use root folder (where index.html is)
+          node-version: '20'
 
+      # 3. Install dependencies
+      - name: Install dependencies
+        run: npm install
+
+      # 4. Build the project (React default output: build/)
+      - name: Build project
+        run: npm run build
+
+      # 5. Deploy to GitHub Pages
       - name: Deploy to GitHub Pages
         uses: actions/deploy-pages@v4
+        with:
+          path: build  # Deploy the build folder
